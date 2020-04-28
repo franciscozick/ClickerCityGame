@@ -8,7 +8,7 @@ public class HelperMoney{
     private  int numHelper1;
     private int numHelper2;
     private double help1Rate=0.05;
-    private double help2Rate=10;
+    private double help2Rate=1000;
     private long moneyMade;
     int tracker = 0;
 
