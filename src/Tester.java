@@ -5,11 +5,11 @@ import java.io.IOException;
 
 public class Tester {
     public static void main(String[] args) throws IOException {
-        Screen jeff = new Screen();
-        //jeff.createScreen();
-        GameRunning game = new GameRunning(jeff,args[0]);//add file here later
+        GameRunning game = new GameRunning(args[0]);
+        Screen screen = new Screen(game, 1600,900,1600,900);
+        screen.createScreen();
         long timeStart = System.nanoTime();
-        double ns = 1000000000.0/120.0;
+        double ns = 1000000000.0/30.0;
         double delta=0;
 
         int tick=0;
@@ -23,16 +23,13 @@ public class Tester {
                 tick++;
                 delta--;
             }
-            if(tick==120){
-                game.getJosh().makeMoney();
+            if(tick==15){
+                game.tick();
                 tick =0;
-                System.out.println(game.tick());
+                screen.updateScreen();
+                System.out.print(game.getMoney());
             }
-
-            //counter++;
         }
-
-
     }
 }
 
