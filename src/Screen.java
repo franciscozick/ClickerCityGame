@@ -6,6 +6,7 @@ public class Screen {
     private JFrame win = new JFrame();;
     private TextField showTextMoney = new TextField();
     private Font customFontOne = new Font("customFontOne",Font.PLAIN,29);
+
     public Screen(GameRunning gameIn, int x, int y, int w, int h) {
         game = gameIn;//game variable
         win.setBounds(x, y, w, h);//sets the size of the window
