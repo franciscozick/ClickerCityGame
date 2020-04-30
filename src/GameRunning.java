@@ -33,8 +33,4 @@ public void tick(){
         josh= new HelperMoney(statsReader);
 
     }
-    public HelperMoney getJosh() {
-        return josh;
-    }
-
 }
