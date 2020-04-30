@@ -9,7 +9,7 @@ public class Tester {
         Screen screen = new Screen(game, 1600,900,1600,900);
         screen.createScreen();
         long timeStart = System.nanoTime();
-        double ns = 1000000000.0/30.0;
+        double ns = 1000000000.0/50.0;
         double delta=0;
 
         int tick=0;
@@ -23,7 +23,7 @@ public class Tester {
                 tick++;
                 delta--;
             }
-            if(tick==15){
+            if(tick==5){
                 game.tick();
                 tick =0;
                 screen.updateScreen();

@@ -21,7 +21,7 @@ public class HelperMoney {
         }
     }
     public double makeMoney() {
-        return (numHelper1 * help1Rate) + (numHelper2 * help2Rate);
+        return ((numHelper1 * help1Rate) + (numHelper2 * help2Rate))/10;
     }
 }
 
