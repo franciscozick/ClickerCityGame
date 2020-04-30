@@ -4,33 +4,35 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GameRunning {
-    //Needs tick stuff
-    //How to run it
-    MouseClicks jeff;
-    HelperMoney josh;
-    String name;
-    long money;
-public  long getMoney(){
-    return money;
-}
-public void setMoney(long add){
-    money+=add;
-}
-public void tick(){
-    money+=josh.makeMoney();
+    private MouseClicks jeff;
+    private HelperMoney josh;
+    private String name;
+    private long money;
+
+    public long getMoney() {
+        return money;
     }
-    private long checkMoney()
-    {
-    return 0;
+
+    public void setMoney(long add) {
+        money += add;
     }
-    public GameRunning(String fileInput) throws FileNotFoundException {
-        File playerStats = new File(fileInput);
-        Scanner statsReader = new Scanner(playerStats);
-        name=statsReader.nextLine();
-        money=statsReader.nextInt();
-        System.out.println(name+" owns $"+money);
+
+    public void tick() {
+        money += josh.makeMoney();
+    }
+
+    private long checkMoney() {
+        return money;
+    }
+
+    public GameRunning(File fileInput) throws FileNotFoundException {
+
+        Scanner statsReader = new Scanner(fileInput);
+        name = statsReader.nextLine();
+        money = statsReader.nextInt();
+        System.out.println(name + " owns $" + money);
         jeff = new MouseClicks(5);
-        josh= new HelperMoney(statsReader);
+        josh = new HelperMoney(statsReader);
 
     }
 }

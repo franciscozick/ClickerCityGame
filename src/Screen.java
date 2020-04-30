@@ -2,37 +2,29 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Screen {
-    GameRunning game;
-    JFrame win = new JFrame();;
-    JLabel moneyShower= new JLabel();
-    JPanel panel=new JPanel();
-    TextField showText= new TextField();
-    Font jefferson = new Font("Otaku",Font.PLAIN,50);
-
-
+    private GameRunning game;
+    private JFrame win = new JFrame();;
+    private TextField showTextMoney = new TextField();
+    private Font customFontOne = new Font("customFontOne",Font.PLAIN,30);
     public Screen(GameRunning gameIn, int x, int y, int w, int h) {
+        game = gameIn;//game variable
+        win.setBounds(x, y, w, h);//sets the size of the window
+        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//makes the program stop when you close it
+        showTextMoney.setBackground(Color.blue);// sets the collor of the backgroud of the showmoney
+        showTextMoney.setText("You have $" + game.getMoney());//sets the text as the inital money
+        showTextMoney.setFont(customFontOne);//sets the font
+        win.add(showTextMoney);//adds the text to the screen
 
-        game = gameIn;
-
-        win.setBounds(x, y, w, h);
-
-        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel.setLocation(1400,600);
-        win.add(panel);
-        panel.add(moneyShower);
-        showText.setLocation(1000,600);
-        showText.setText("You have $" + game.getMoney());
-
-        showText.setFont(jefferson);
-        ;
-        win.add(showText);
     }
     public void createScreen() {
         win.show();
     }
     public void updateScreen() {
-        showText.setText("You have " + game.getMoney()+"sheeps");
-        showText.show();
+        showTextMoney.setBounds(20,100,400,80);
+        showTextMoney.setText("You have " + game.getMoney()+"sheeps");
+        showTextMoney.show();
+
+
     }
 
     public JFrame getWin() {

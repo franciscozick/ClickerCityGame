@@ -5,10 +5,11 @@ import java.util.Scanner;
 
 public class HelperMoney {
     private long initialMoney;
+
     private int numHelper1;
     private int numHelper2;
-    private double help1Rate = 0.054;
-    private double help2Rate = 0.13;
+    private double help1Rate = 0.0131;
+    private double help2Rate = 0.1;
     private long moneyMade;
     int tracker = 0;
 
@@ -21,6 +22,7 @@ public class HelperMoney {
         }
     }
     public double makeMoney() {
+
         return ((numHelper1 * help1Rate) + (numHelper2 * help2Rate))/10;
     }
 }

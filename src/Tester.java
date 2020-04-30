@@ -1,11 +1,13 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class Tester {
     public static void main(String[] args) throws IOException {
-        GameRunning game = new GameRunning(args[0]);
+        File bla = new File(args[0]);
+        GameRunning game = new GameRunning(bla);
         Screen screen = new Screen(game, 1600,900,1600,900);
 
         screen.createScreen();
