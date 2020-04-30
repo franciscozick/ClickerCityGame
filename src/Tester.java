@@ -10,7 +10,7 @@ public class Tester {
         GameRunning game = new GameRunning(bla);
         Screen screen = new Screen(game, 1600,900,1600,900);
 
-        screen.createScreen();
+        screen.createScreen(); // wee woo chris was here lul
         long timeStart = System.nanoTime();
         double ns = 1000000000.0/50.0;
         double delta=0;
