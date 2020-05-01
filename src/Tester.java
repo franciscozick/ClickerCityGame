@@ -31,7 +31,7 @@ public class Tester {
                 game.tick();
                 screen.updateScreen();
                 tick =0;
-                System.out.println(game.getMoney());
+                System.out.println(game.getMoney()+"\n"+"aaaa");
             }
         }
     }

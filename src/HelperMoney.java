@@ -1,14 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HelperMoney {
-    private long initialMoney;
-    double[] helperRates= new double[2];
-    double[] amountOfHelpers= new double[2];
-
+    private double[] helperRates= new double[10];
+    private double[] amountOfHelpers= new double[10];
     public HelperMoney(Scanner statsReader) {
         while (statsReader.hasNext()) {
             statsReader.nextLine();
@@ -16,8 +13,10 @@ public class HelperMoney {
                 amountOfHelpers[i]=statsReader.nextDouble();
                 System.out.println(amountOfHelpers[i]);
             }
-            helperRates[0]=0.01;
-            helperRates[1]=0.1;
+            for(int i =0;i<helperRates.length;i++){
+                helperRates[i]=statsReader.nextDouble();
+                System.out.println(helperRates[i]);
+            }
         }
     }
     public double makeMoney() {
@@ -26,6 +25,14 @@ public class HelperMoney {
             money+= amountOfHelpers[i]*helperRates[i];
         }
         return money;
+    }
+    public double moneyPerSecond(){
+        Double moneyPer=0.0;
+        for(int i =0;i<amountOfHelpers.length;i++){
+            moneyPer+= amountOfHelpers[i]*helperRates[i];
+        }
+        //moneyPer.toFixed(2);
+        return moneyPer;
     }
 }
 
