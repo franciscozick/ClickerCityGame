@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseListener;
 import java.text.*;
 public class Screen {
+
     NumberFormat nf = NumberFormat.getInstance();
     private GameRunning game;
     private JFrame win = new JFrame();;
@@ -17,6 +19,7 @@ public class Screen {
     public Screen(GameRunning gameIn, int x, int y, int w, int h) {
         nf.setMaximumFractionDigits(6);
         game = gameIn;//game variable
+
         win.setBounds(x, y, w, h);//sets the size of the window
         win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//makes the program stop when you close it
         TextField nameText = new TextField(gameIn.getName());

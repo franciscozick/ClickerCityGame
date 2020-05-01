@@ -39,7 +39,8 @@ public class GameRunning {
         TextField nameText = new TextField(name);
         nameText.setBounds(20,10,100,40);
         System.out.println(name + " owns $" + money);
-        jeff = new MouseClicks(this);
+
         josh = new HelperMoney(statsReader);
+        jeff = new MouseClicks(josh);
     }
 }
