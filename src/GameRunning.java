@@ -8,11 +8,20 @@ public class GameRunning {
     private MouseClicks jeff;
     private HelperMoney josh;
     private String name;
-    private long money;
+    private double money;
+
+    public MouseClicks getJeff() {
+        return jeff;
+    }
+
+    public void setMoney(long input) {
+        money+=input;
+    }
+
     public String getName() {
         return name;
     }
-    public long getMoney() {
+    public double getMoney() {
         return money;
     }
     public void tick() {
@@ -30,7 +39,7 @@ public class GameRunning {
         TextField nameText = new TextField(name);
         nameText.setBounds(20,10,100,40);
         System.out.println(name + " owns $" + money);
-        jeff = new MouseClicks(5);
+        jeff = new MouseClicks(this);
         josh = new HelperMoney(statsReader);
     }
 }
