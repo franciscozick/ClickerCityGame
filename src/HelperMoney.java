@@ -1,42 +1,80 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Scanner;
 
 public class HelperMoney {
-    private double[] helperRates= new double[10];
-    private double[] amountOfHelpers= new double[10];
-
-    public void setAmountOfHelpers(int index) {
-        amountOfHelpers[index]+=1;
+    private double[] helperRates = new double[10];
+    private double[] amountOfHelpers = new double[10];
+    private double[] helperCosts = new double[10];
+    JButton help1 = new JButton();
+    GameRunning game;
+    public void setAmountOfHelpers(int index)
+    {
+        amountOfHelpers[index] += 1;
     }
 
-    public HelperMoney(Scanner statsReader) {
+    public HelperMoney(Scanner statsReader,GameRunning gameIN) {
+        game=gameIN;
         while (statsReader.hasNext()) {
             statsReader.nextLine();
-            for(int i =0;i<amountOfHelpers.length;i++){
-                amountOfHelpers[i]=statsReader.nextDouble();
+            for (int i = 0; i < amountOfHelpers.length; i++) {
+                amountOfHelpers[i] = statsReader.nextDouble();
                 System.out.println(amountOfHelpers[i]);
             }
-            for(int i =0;i<helperRates.length;i++){
-                helperRates[i]=statsReader.nextDouble();
+            for (int i = 0; i < helperRates.length; i++) {
+                helperRates[i] = statsReader.nextDouble();
                 System.out.println(helperRates[i]);
             }
-        }
+            for (int i = 0; i < helperCosts.length; i++) {
+                helperCosts[i] = statsReader.nextDouble();
+                System.out.println(helperCosts[i]);
+            }
+
+            }
+        help1.setActionCommand("1");
+        help1.setText("Helper 1");
+        help1.setFont(Screen.CUSTOM_FONT_TWO);
+        help1.setBounds(800, 20, 100, 10);
+        help1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setAmountOfHelpers(0);
+                if(game.getMoney()>10)
+                {
+                    game.setMoney(-10);
+                }
+                help1.setBounds(800, 20, 100, 50);
+            }
+        });
+
     }
-    public double makeMoney() {
-        double money=0;
-        for(int i =0;i<amountOfHelpers.length;i++){
-            money+= amountOfHelpers[i]*helperRates[i];
-        }
-        return money+1;
+    public double getHelperCost(int index){
+        return helperCosts[index];
     }
-    public double moneyPerSecond(){
-        Double moneyPer=0.0;
-        for(int i =0;i<amountOfHelpers.length;i++){
-            moneyPer+= amountOfHelpers[i]*helperRates[i];
+    public void setHelperCost(int index, double price) {
+        helperCosts[index]=price;
+    }
+        public JButton returnButton()
+    {
+        return help1;
+    }
+
+    public double makeMoney()
+    {
+        double money = 0;
+        for (int i = 0; i < amountOfHelpers.length; i++) {
+            money += amountOfHelpers[i] * helperRates[i];
         }
-        //moneyPer.toFixed(2);
+        return money ;
+    }
+    public double moneyPerSecond()
+    {
+        Double moneyPer = 0.0;
+        for (int i = 0; i < amountOfHelpers.length; i++) {
+            moneyPer += amountOfHelpers[i] * helperRates[i];
+        }
         return moneyPer;
     }
 }
