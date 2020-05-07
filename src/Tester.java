@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Tester {
     public static void main(String[] args) throws IOException {
-        File bla = new File(args[0]);
+        File bla = new File("../FinalClickerGame/src/PlayerData");
         GameRunning game = new GameRunning(bla);
         Screen screen = new Screen(game, 1600,900,1600,900);
 

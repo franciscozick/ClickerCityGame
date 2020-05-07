@@ -49,7 +49,8 @@ public class Screen {
                                 game.getJosh().setAmountOfHelpers(i);
                                 game.setMoney(-game.getJosh().getHelperCost(i));
                                 game.getJosh().setHelperCost(i, game.getJosh().getHelperCost(i) * (1.1 + ((double) i / 10)));
-                                priceOfHelpers.get(i).setText(""+game.getJosh().getHelperCost(i));
+                                String priceDouble = nf.format(game.getJosh().getHelperCost(i));
+                                priceOfHelpers.get(i).setText(priceDouble);
                                 System.out.println(game.getJosh().getHelperCost(i));
                             }
                             break;
@@ -63,7 +64,7 @@ public class Screen {
 
     public void createScreen() {
         nf.setMaximumFractionDigits(2);
-        Image img = Toolkit.getDefaultToolkit().getImage("/home/francisco/Desktop/GameBackgroud2.jpg");
+        Image img = Toolkit.getDefaultToolkit().getImage("../FinalClickerGame/src/GameBackgroud2.jpg");
         nameText = new TextField(game.getName());
         nameText.setFont(CUSTOM_FONT_ONE);
         nameText.setBackground(Color.gray);
@@ -87,7 +88,6 @@ public class Screen {
             priceOfHelpers.add(new TextField("" + game.getJosh().getHelperCost(i)));
             priceOfHelpers.get(i).setFont(CUSTOM_FONT_TWO);
             priceOfHelpers.get(i).setText("" + game.getJosh().getHelperCost(i));
-          // priceOfHelpers.get(i).setBounds(1200, 60+60*i, 200, 60);
             priceOfHelpers.get(i).show();
             win.add(priceOfHelpers.get(i));
             System.out.println(priceOfHelpers.get(i).getText());
@@ -100,14 +100,27 @@ public class Screen {
 
     public void updateScreen() {
         for(int i =0;i<priceOfHelpers.size();i++){
-            priceOfHelpers.get(i).setBounds(1380,2+60*i,100,30);
+            priceOfHelpers.get(i).setBounds(1380,60*i,100,20);
         }
         nameText.setBounds(0, 0, 400, 50);
         showTextMoney.setBounds(750, 40, 400, 80);
         moneyPerSec.setBounds(750, 120, 300, 50);
         Double moneyPer = game.getJosh().moneyPerSecond();
         moneyPerSec.setText(nf.format(moneyPer) + "/s");
-        showTextMoney.setText("You have $" + nf.format(game.getMoney()));
+        String[] prefix = {"K","M","B","T"};
+
+        String usePrefix="";
+        int divideBy=1;
+        int index=0;
+        for(int i =1000;i<Math.pow(i,9);i*=1000){
+            if(game.getMoney()>i)
+            {
+                divideBy=i;
+                usePrefix=prefix[index];
+                index++;
+            }
+        }
+        showTextMoney.setText("You have $" + nf.format(game.getMoney()/divideBy)+usePrefix);
         showTextMoney.show();
     }
 }
