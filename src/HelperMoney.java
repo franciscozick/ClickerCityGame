@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class HelperMoney {
     private double[] helperRates = new double[10];
-    private double[] amountOfHelpers = new double[10];
+    private int[] amountOfHelpers = new int[10];
     private double[] helperCosts = new double[10];
     JButton help1 = new JButton();
     GameRunning game;
@@ -21,7 +21,7 @@ public class HelperMoney {
         while (statsReader.hasNext()) {
             statsReader.nextLine();
             for (int i = 0; i < amountOfHelpers.length; i++) {
-                amountOfHelpers[i] = statsReader.nextDouble();
+                amountOfHelpers[i] = statsReader.nextInt();
                 System.out.println(amountOfHelpers[i]);
             }
             for (int i = 0; i < helperRates.length; i++) {
@@ -49,6 +49,9 @@ public class HelperMoney {
             }
         });
 
+    }
+    public int[] getAmountOfHelpers(){
+        return amountOfHelpers;
     }
     public double getHelperCost(int index){
         return helperCosts[index];
