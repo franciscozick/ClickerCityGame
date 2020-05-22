@@ -1,19 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.*;
 import java.util.ArrayList;
 
 public class Screen {
-    Container contentPane;
-    Graphics g;
-
     NumberFormat nf = NumberFormat.getInstance();
     private GameRunning game;
     private JFrame win = new JFrame();
-    ;
     private TextField showTextMoney = new TextField();
     private static final Font CUSTOM_FONT_ONE = new Font("customFontOne", Font.PLAIN, 29);
     static final Font CUSTOM_FONT_TWO = new Font("customFontTwo", Font.ITALIC, 15);
@@ -37,7 +32,7 @@ public class Screen {
                 if (e.getX() < 300 && e.getY() > 300) {
                     game.setMoney(1.0);
                 }
-                if (e.getX() > 1200) {
+                if (e.getX() > 1410) {
                     System.out.print("it works");
                     for (int i = 0; i < game.getJosh().getAmountOfHelpers().length; i++)
                         if (e.getY() >= i * 100 && e.getY() < 100 + 100 * i) {
@@ -64,7 +59,7 @@ public class Screen {
 
     public void createScreen() {
         nf.setMaximumFractionDigits(2);
-        Image img = Toolkit.getDefaultToolkit().getImage("../FinalClickerGame/src/GameBackgroud2.jpg");
+        Image img = Toolkit.getDefaultToolkit().getImage("/home/francisco/IdeaProjects/FinalClickerGame/src/BackGroudVersionOnejpg.jpg");
         nameText = new TextField(game.getName());
         nameText.setFont(CUSTOM_FONT_ONE);
         nameText.setBackground(Color.gray);
@@ -100,7 +95,7 @@ public class Screen {
 
     public void updateScreen() {
         for(int i =0;i<priceOfHelpers.size();i++){
-            priceOfHelpers.get(i).setBounds(1380,60*i,100,20);
+            priceOfHelpers.get(i).setBounds(1410,70*i,100,20);
         }
         nameText.setBounds(0, 0, 400, 50);
         showTextMoney.setBounds(750, 40, 400, 80);
